@@ -151,8 +151,8 @@ class Home(CTkFrame):
     def update_edges(self):
         self.G.add_edges_from([(route.origin.name, route.destination.name, {
             "weight":  round(int(route.distance) / int(route.time_flight), 2),
-            'distance': int(route.distance),
-            'time': int(route.time_flight),
+            'distance': round(int(route.distance), 2),
+            'time': round(int(route.time_flight), 2)
         }) for route in lst_routes])
 
     def update(self):
