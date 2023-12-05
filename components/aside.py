@@ -257,7 +257,7 @@ class TableTemplate(CTkFrame):
 
         if self.title == 'Aeropuertos':
             airport = next(i for i in lst_airports if i == element)
-            
+
             for c in aside_r.main.winfo_children():
                 for v in c.winfo_children():
                     if v.cget('text') == airport.name:
@@ -271,8 +271,7 @@ class TableTemplate(CTkFrame):
             args[1] = next(i for i in lst_airports if i.name == args[1])
             route = next(i for i in lst_routes if i == element)
             route.set(*args)
-
-            self.home.edit_edge()
+            self.home.edit_edge(route)
 
         self.close_toplevel()
 

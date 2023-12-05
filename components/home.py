@@ -122,7 +122,8 @@ class Home(CTkFrame):
         self.update_edges()
         self.delete_node(old_airport)
 
-    def edit_edge(self):
+    def edit_edge(self, new):
+        self.update_lst_routes(new)
         self.update()
 
     def delete_node(self, airport):
@@ -135,7 +136,7 @@ class Home(CTkFrame):
         self.update_lst_routes()
         self.update()
 
-    def update_lst_routes(self):
+    def update_lst_routes(self, new=None):
         global lst_routes
         lst_routes = []
 
@@ -143,6 +144,9 @@ class Home(CTkFrame):
             o = next((i for i in lst_airports if i.name == u), None)
             ds = next((i for i in lst_airports if i.name == v), None)
             lst_routes.append(Route(o, ds, d['distance'], d['time']))
+
+        if new:
+            lst_routes.append(new)
 
     def update_edges(self):
         self.G.add_edges_from([(route.origin.name, route.destination.name, {
